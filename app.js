@@ -1,5 +1,7 @@
 const express = require('express')
 const app = express()
+const path = require('path')
+
 const mongoose = require('mongoose')
 // Morgan is basically a logger, on any requests being made,it generates logs automatically. 
 //Morgan is a popular HTTP request middleware logger for Node. js and basically used as a logger.
