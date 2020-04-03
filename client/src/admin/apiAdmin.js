@@ -1,7 +1,8 @@
-import { API } from '../config'
+//import { API } from '../config'
+require('dotenv').config()
 
 export const createCategory = (userId, token, categoryName) => {
-    return fetch(`${API}/category/create/${userId}`, {
+    return fetch(`${process.env.REACT_APP_API_URL}/category/create/${userId}`, {
         method: "POST",
         headers: {
             Accept: "application/json",
@@ -15,7 +16,7 @@ export const createCategory = (userId, token, categoryName) => {
 }
 
 export const createProduct = (userId, token, product) => {
-    return fetch(`${API}/product/create/${userId}`, {
+    return fetch(`${process.env.REACT_APP_API_URL}/product/create/${userId}`, {
         method: "POST",
         headers: {
             Accept: "application/json",
@@ -28,7 +29,7 @@ export const createProduct = (userId, token, product) => {
 }
 
 export const getAllCategories = () => {
-    return fetch(`${API}/categories`, {
+    return fetch(`${process.env.REACT_APP_API_URL}/categories`, {
         method: "GET"
     }).then(response => {
         return response.json()
@@ -36,7 +37,7 @@ export const getAllCategories = () => {
 }
 
 export const listOrders = (userId, token) => {
-    return fetch(`${API}/order/list/${userId}`, {
+    return fetch(`${process.env.REACT_APP_API_URL}/order/list/${userId}`, {
         method: "GET",
         headers: {
             Accept: "application/json",
@@ -53,7 +54,7 @@ export const listOrders = (userId, token) => {
 }
 
 export const getStatusValues = (userId, token) => {
-    return fetch(`${API}/order/status-values/${userId}`, {
+    return fetch(`${process.env.REACT_APP_API_URL}/order/status-values/${userId}`, {
         method: "GET",
         headers: {
             Accept: "application/json",
@@ -69,7 +70,7 @@ export const getStatusValues = (userId, token) => {
 }
 
 export const updateOrderStatus = (userId, token, orderId, status) => {
-    return fetch(`${API}/order/${orderId}/status/${userId}`, {
+    return fetch(`${process.env.REACT_APP_API_URL}/order/${orderId}/status/${userId}`, {
         method: "PUT",
         headers: {
             Accept: "application/json",
@@ -97,7 +98,7 @@ export const updateOrderStatus = (userId, token, orderId, status) => {
  */
 
 export const getProducts = () => {
-    return fetch(`${API}/products?limit=undefined`, {
+    return fetch(`${process.env.REACT_APP_API_URL}/products?limit=undefined`, {
         method: 'GET'
     })
         .then(response => {
@@ -107,7 +108,7 @@ export const getProducts = () => {
 }
 
 export const deleteProduct = (productId, userId, token) => {
-    return fetch(`${API}/product/${productId}/${userId}`, {
+    return fetch(`${process.env.REACT_APP_API_URL}/product/${productId}/${userId}`, {
         method: 'DELETE',
         headers: {
             Accept: 'application/json',
@@ -122,7 +123,7 @@ export const deleteProduct = (productId, userId, token) => {
 }
 
 export const getProduct = productId => {
-    return fetch(`${API}/product/${productId}`, {
+    return fetch(`${process.env.REACT_APP_API_URL}/product/${productId}`, {
         method: 'GET'
     })
         .then(response => {
@@ -132,7 +133,7 @@ export const getProduct = productId => {
 }
 
 export const updateProduct = (productId, userId, token, product) => {
-    return fetch(`${API}/product/${productId}/${userId}`, {
+    return fetch(`${process.env.REACT_APP_API_URL}/product/${productId}/${userId}`, {
         method: 'PUT',
         headers: {
             Accept: 'application/json',
