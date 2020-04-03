@@ -1,5 +1,6 @@
-require('dotenv').config()
+
 import qs from 'query-string'
+require('dotenv').config()
 
 export const getProducts = (sortBy) => {
     return fetch(`${process.env.REACT_APP_API_URL}/products?sortBy=${sortBy}&order=desc&limit=6`, {
