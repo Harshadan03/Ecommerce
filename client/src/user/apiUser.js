@@ -1,8 +1,7 @@
-//import { API } from '../config'
-require('dotenv').config()
+const REACT_APP_API_URL = "/api"
 
 export const readUserProfile = (userId, token) => {
-    return fetch(`${process.env.REACT_APP_API_URL}/user/${userId}`, {
+    return fetch(`${REACT_APP_API_URL}/user/${userId}`, {
         method: "GET",
         headers: {
             Accept: "application/json",
@@ -16,7 +15,7 @@ export const readUserProfile = (userId, token) => {
 }
 
 export const updateUserProfile = (userId, token, user) => {
-    return fetch(`${process.env.REACT_APP_API_URL}/user/${userId}`, {
+    return fetch(`${REACT_APP_API_URL}/user/${userId}`, {
         method: "PUT",
         headers: {
             Accept: "application/json",
@@ -43,7 +42,7 @@ export const updateUserInLocalStorage = (userData, next) => {
 
 
 export const getPurchaseHistory = (userId, token) => {
-    return fetch(`${process.env.REACT_APP_API_URL}/order/by/user/${userId}`, {
+    return fetch(`${REACT_APP_API_URL}/order/by/user/${userId}`, {
         method: "GET",
         headers: {
             Accept: "application/json",

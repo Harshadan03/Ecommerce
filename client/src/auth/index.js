@@ -1,11 +1,11 @@
-require('dotenv').config()
+const REACT_APP_API_URL = "/api"
 
 export const signup = (user) => {
     //console.log(name, email, password)
     //fetch is avilable with browser by default
     //used to call api's
     //here we are calling the api for signup to send the data to the database
-    return fetch(`${process.env.REACT_APP_API_URL}/signup`, {
+    return fetch(`${REACT_APP_API_URL}/signup`, {
         method: "POST",
         headers: {
             Accept: "application/json",
@@ -21,7 +21,7 @@ export const signin = (user) => {
     //fetch is avilable with browser by default
     //used to call api's
     //here we are calling the api for signin to send the data to the database
-    return fetch(`${process.env.REACT_APP_API_URL}/signin`, {
+    return fetch(`${REACT_APP_API_URL}/signin`, {
         method: "POST",
         headers: {
             Accept: "application/json",
@@ -43,7 +43,7 @@ export const signout = (next) => {
     if (typeof window !== "undefined") {
         localStorage.removeItem("jwt")
         next()
-        return fetch(`${process.env.REACT_APP_API_URL}/signout`, {
+        return fetch(`${REACT_APP_API_URL}/signout`, {
             method: "GET"
         })
             .then(response => { console.log("signout ", response) })

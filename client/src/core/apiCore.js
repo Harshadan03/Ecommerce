@@ -1,9 +1,10 @@
 
 import qs from 'query-string'
-require('dotenv').config()
+const REACT_APP_API_URL = "/api"
+
 
 export const getProducts = (sortBy) => {
-    return fetch(`${process.env.REACT_APP_API_URL}/products?sortBy=${sortBy}&order=desc&limit=6`, {
+    return fetch(`${REACT_APP_API_URL}/products?sortBy=${sortBy}&order=desc&limit=6`, {
         method: "GET"
     })
         .then(response => {
@@ -13,7 +14,7 @@ export const getProducts = (sortBy) => {
 
 
 export const getAllCategories = () => {
-    return fetch(`${process.env.REACT_APP_API_URL}/categories`, {
+    return fetch(`${REACT_APP_API_URL}/categories`, {
         method: "GET"
     }).then(response => {
         return response.json()
@@ -27,7 +28,7 @@ export const getFilteredProducts = (skip, limit, filters = {}) => {
         limit, skip, filters
     }
 
-    return fetch(`${process.env.REACT_APP_API_URL}/products/by/search`, {
+    return fetch(`${REACT_APP_API_URL}/products/by/search`, {
         method: "POST",
         headers: {
             Accept: "application/json",
@@ -44,7 +45,7 @@ export const getFilteredProducts = (skip, limit, filters = {}) => {
 export const list = (params) => {
     const query = qs.stringify(params)
     console.log("query", query)
-    return fetch(`${process.env.REACT_APP_API_URL}/products/search?${query}`, {
+    return fetch(`${REACT_APP_API_URL}/products/search?${query}`, {
         method: "GET"
     }).then(response => {
         return response.json()
@@ -54,7 +55,7 @@ export const list = (params) => {
 
 //get singl eproduct by id from backend
 export const readSingleProductFromApi = (productId) => {
-    return fetch(`${process.env.REACT_APP_API_URL}/product/${productId}`, {
+    return fetch(`${REACT_APP_API_URL}/product/${productId}`, {
         method: "GET"
     }).then(response => {
         return response.json()
@@ -63,7 +64,7 @@ export const readSingleProductFromApi = (productId) => {
 
 //get list of related products
 export const listRealted = (productId) => {
-    return fetch(`${process.env.REACT_APP_API_URL}/products/related/${productId}`, {
+    return fetch(`${REACT_APP_API_URL}/products/related/${productId}`, {
         method: "GET"
     }).then(response => {
         return response.json()
@@ -73,7 +74,7 @@ export const listRealted = (productId) => {
 
 //get braintree client token from backend
 export const getBraintreeClientToken = (userId, token) => {
-    return fetch(`${process.env.REACT_APP_API_URL}/braintree/getToken/${userId}`, {
+    return fetch(`${REACT_APP_API_URL}/braintree/getToken/${userId}`, {
         method: "GET",
         headers: {
             Accept: "application/json",
@@ -87,7 +88,7 @@ export const getBraintreeClientToken = (userId, token) => {
 
 //get braintree client token from backend
 export const processPayment = (userId, token, paymentData) => {
-    return fetch(`${process.env.REACT_APP_API_URL}/braintree/payment/${userId}`, {
+    return fetch(`${REACT_APP_API_URL}/braintree/payment/${userId}`, {
         method: "POST",
         headers: {
             Accept: "application/json",
@@ -103,7 +104,7 @@ export const processPayment = (userId, token, paymentData) => {
 
 // create order
 export const createOrder = (userId, token, createOrderdata) => {
-    return fetch(`${process.env.REACT_APP_API_URL}/order/create/${userId}`, {
+    return fetch(`${REACT_APP_API_URL}/order/create/${userId}`, {
         method: "POST",
         headers: {
             Accept: "application/json",
