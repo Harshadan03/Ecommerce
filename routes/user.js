@@ -4,6 +4,7 @@ const router = express.Router()
 const { requireSignIn, isAdmin, isAuth } = require('../controllers/auth')
 const { userById, readUserProfile, updateUserProfile, purchaseHistory } = require('../controllers/user')
 
+//example route
 router.get('/secret/:userId', requireSignIn, isAuth, isAdmin, (req, res) => {
     res.json({
         user: req.profile
